@@ -2,6 +2,9 @@
 
 Scripts publics que j'ai fait sur le serveur Feed the Patrick.
 
+## Disclaimer
+Je ne fais *aucun* support sur ce qui se trouve dans ce repo. Si vous arrivez à déchiffrer mon code, tant mieux, sinon tant pis.
+
 ## Saison 1
 ### Dossier reacteur
 C'est les scripts des 3 ordinateurs utilisés pour le réacteur d'aypierre. Le code n'est pas vraiment flexible, c'est donc assez dur de l'adapter pour votre usage si vous ne connaissez pas bien le Lua.

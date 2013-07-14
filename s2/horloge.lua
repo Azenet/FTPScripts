@@ -1,3 +1,4 @@
+os.loadAPI("ocs/apis/sensor")
 m = peripheral.wrap("front")
 s = sensor.wrap("back")
 local t,day,time = s.getTargets(), os.day(), os.time()

@@ -15,4 +15,4 @@ C'est les scripts des 3 ordinateurs utilisés pour le réacteur d'aypierre. Le c
 
 ## Saison 2
 ### horloge.lua
-Un script très simple qui affiche l'heure du monde avec un écran connecté à l'avant de l'ordinateur.
+Un script très simple qui affiche l'heure du monde avec un écran connecté à l'avant de l'ordinateur. Utilise un capteur OpenCCSensors avec une carte Sonic à l'arrière de l'ordinateur.

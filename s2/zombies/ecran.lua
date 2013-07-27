@@ -15,7 +15,7 @@ function xpPointsToLevels(points)
 	if (pts < 0) then return 0 end
 	if (pts <= 272) then return math.floor(pts/17)
 	elseif (pts > 272 and pts <= 887) then return math.floor((1/6)*(59+math.sqrt(-5159+(24*pts))))
-	else return math.floor((1/14)*(303+math.sqrt(-32411+(56*pts)))) end
+	else return math.floor((1/14)*(303+math.sqrt(-32511+(56*pts)))) end
 end
 
 rednet.open("front")

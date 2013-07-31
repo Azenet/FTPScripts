@@ -26,3 +26,9 @@ C'est les scripts des 3 ordinateurs + 2 turtles utilisées pour la ferme à XP a
 * **piston.lua:** Script de l'ordinateur qui contrôle le piston avant les turtles
 * **turtle.lua:** Script des turtles tueuses
 * **ecran.lua:** Script de l'écran extérieur qui affiche l'XP
+
+### Dossier secretroom
+C'est les scripts des 2 ordinateurs contrôlant piston et frames.
+
+* **main.lua:** Script de l'ordinateur qui contrôle le piston et qui envoie 2 fois down/up
+* **frame.lua:** Script de l'ordinateur qui contrôle les frames

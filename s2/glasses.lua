@@ -1,22 +1,22 @@
 
 function explode(div,str) -- credit: http://richard.warburton.it
-  if (div=='') then return false end
-  local pos,arr = 0,{}
-  -- for each divider found
-  for st,sp in function() return string.find(str,div,pos,true) end do
-    table.insert(arr,string.sub(str,pos,st-1)) -- Attach chars left of current divider
-    pos = sp + 1 -- Jump past current divider
-  end
-  table.insert(arr,string.sub(str,pos)) -- Attach chars right of last divider
-  return arr
+	if (div=='') then return false end
+	local pos,arr = 0,{}
+	-- for each divider found
+	for st,sp in function() return string.find(str,div,pos,true) end do
+		table.insert(arr,string.sub(str,pos,st-1)) -- Attach chars left of current divider
+		pos = sp + 1 -- Jump past current divider
+	end
+	table.insert(arr,string.sub(str,pos)) -- Attach chars right of last divider
+	return arr
 end
 
 function xpPointsToLevels(points)
-        local pts = tonumber(points)
-        if (pts < 0) then return 0 end
-        if (pts <= 272) then return math.floor(pts/17)
-        elseif (pts > 272 and pts <= 887) then return math.floor((1/6)*(59+math.sqrt(-5159+(24*pts))))
-        else return math.floor((1/14)*(303+math.sqrt(-32511+(56*pts)))) end
+	local pts = tonumber(points)
+	if (pts < 0) then return 0 end
+	if (pts <= 272) then return math.floor(pts/17)
+	elseif (pts > 272 and pts <= 887) then return math.floor((1/6)*(59+math.sqrt(-5159+(24*pts))))
+	else return math.floor((1/14)*(303+math.sqrt(-32511+(56*pts)))) end
 end
 
 rednet.open("back")
@@ -41,22 +41,23 @@ text.setZIndex(101)
 
 
 while true do
-        e,a,b,c = os.pullEvent()
---      print(textutils.serialize({e,a,b,c}))
-        if (e == "rednet_message" and string.match(b, "azenet:xp:")) then
-                local m = explode(':', b)
-                text.setText(xpPointsToLevels(m[3]).." niveaux")
-                actualPercentage.setWidth(math.floor((tonumber(m[3])/1980)*(w+4)))
-        elseif (e == "rednet_message" and b == "azenet:closexp") then
-                text.setColor(0xff1313)
-        elseif (e == "rednet_message" and b == "azenet:openxp") then
-                text.setColor(0x61903b)
-        elseif (e == "chat_command" and b == "azenet" and a == "stopXP") then
-                rednet.broadcast("azenet:closexp")
-                text.setColor(0xff1313)
-        elseif (e == "chat_command" and b == "azenet" and a == "startXP") then
-                rednet.broadcast("azenet:openxp")
-                text.setColor(0x61903b)
-        end
+	e,a,b,c = os.pullEvent()
+	if (e == "rednet_message" and string.match(b, "azenet:xp:")) then
+		local m = explode(':', b)
+		text.setText(xpPointsToLevels(m[3]).." niveaux")
+		actualPercentage.setWidth(math.floor((tonumber(m[3])/1980)*(w+4)))
+	elseif (e == "rednet_message" and b == "azenet:closexp") then
+		text.setColor(0xff1313)
+	elseif (e == "rednet_message" and b == "azenet:openxp") then
+		text.setColor(0x61903b)
+	elseif (e == "chat_command" and b == "azenet" and a == "stopXP") then
+		rednet.broadcast("azenet:closexp")
+		text.setColor(0xff1313)
+	elseif (e == "chat_command" and b == "azenet" and a == "startXP") then
+		rednet.broadcast("azenet:openxp")
+		text.setColor(0x61903b)
+	elseif (e == "chat_command" and b == "azenet" and (a == "open" or a == "close")) then
+		rednet.send(58, a)   
+	end
 end
 
